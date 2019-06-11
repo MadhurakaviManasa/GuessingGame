@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>GuessingGame.js</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #a9b7c6;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+GuessingGame.js</font>
+</center></td></tr></table>
+<pre><span class="s0">// program data:</span>
+
+var number = Math.floor(Math.random() * 100) + 1;
+var guess;
+var limit =5;
+var won = false;
+var guesses = [];
+
+// prompt user for their guess
+
+
+
+for(var i = 1; i &lt;= limit; i++){
+
+    do{
+        guess =  parseInt(prompt(&quot;Guess the number: &quot;));
+    }while(isNaN(guess) || isPreviousGuess(guess));
+
+// if correct: let the user know they won
+    if (guess == number){
+        document.write(&quot;Congratulations! Your guess is correct!&quot;);
+        won = true;
+        break;
+        }
+// if incorrect: let the user know
+    else{
+        guesses[i] = guess;
+        alert(&quot;Sorry, incorrect guess... \n You have guessed: &quot; + guesses.toString() + &quot;\nRemaiming tries: &quot;+ (limit - i));
+
+        }
+    }
+
+    if (!won){
+        document.write(&quot;Sorry you ran out of guesses... Game over! :( &lt;br&gt; The correct number was: &quot; + number);
+    }
+
+    function isPreviousGuess(){
+        for(var i=1; i &lt; guesses.length; i++){
+            if (guesses[i] == guess){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }</pre>
+</body>
+</html>
